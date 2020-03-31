@@ -5,12 +5,18 @@ class Brand(models.Model):
     abbreviation = models.CharField(max_length=10, unique=True, blank=False)
     name = models.CharField(max_length=150, blank=False)
 
+    def __str__(self):
+        return self.name
+
 
 class Category(models.Model):
     abbreviation = models.CharField(max_length=10, unique=True, blank=False)
     name = models.CharField(max_length=150, blank=False)
-    parent = models.ForeignKey('self', on_delete=models.PROTECT)
+    parent = models.ForeignKey('self', on_delete=models.PROTECT, null=True, blank=True)
     depth = models.IntegerField(default=0, blank=False)
+
+    def __str__(self):
+        return self.name
 
 
 class Tag(models.Model):
