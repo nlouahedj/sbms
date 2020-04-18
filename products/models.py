@@ -14,7 +14,6 @@ class Category(models.Model):
     abbreviation = models.CharField(max_length=10, unique=True, blank=False)
     name = models.CharField(max_length=150, blank=False)
     parent = models.ForeignKey('self', on_delete=models.PROTECT, null=True, blank=True)
-    #depth = models.IntegerField(default=0, blank=False)
     is_active = models.BooleanField(default=True)
 
     @property
@@ -25,8 +24,6 @@ class Category(models.Model):
             return 1 + p.depth
         else:
             return 0
-
-    #depth = property(_depth)
 
     def __str__(self):
         return self.name

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from admirarchy.toolbox import HierarchicalModelAdmin, AdjacencyList
+from admirarchy.toolbox import HierarchicalModelAdmin
 from .models import Category, Product, Brand, Tag
 
 
